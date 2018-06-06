@@ -37,7 +37,7 @@ class LSH:
         # x = x.reshape(1, self.dimensions)
         values = np.dot(x, self.parameters)
         values = (values > 0).astype(float)
-        return np.squeeze(np.dot(values, self.weights))
+        return np.asscalar(np.squeeze(np.dot(values, self.weights)))
 
     def get_all_hash_value(self, X):
         '''

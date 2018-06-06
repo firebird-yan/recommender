@@ -4,6 +4,7 @@
 相似用户基于LSH算法获得
 '''
 from core.lsh_family import LSH
+import numpy as np
 
 class UserBasedLSHRecommender:
     def __init__(self, train_data, num_hash_functions = 10, num_hash_tables = 8):
@@ -49,7 +50,7 @@ class UserBasedLSHRecommender:
             hash_value = self.lsh_family[i].get_hash_value(x)
 
             if self.buckets[i].get(hash_value) is not None:
-                similar_users = similar_users.extend(self.buckets[i][hash_value])
+                similar_users.extend(self.buckets[i][hash_value])
 
         return list(set(similar_users))
 
@@ -61,3 +62,28 @@ class UserBasedLSHRecommender:
         :return: average of mae
         '''
         m = len(test_data)
+        n = len(test_data[0])
+        mae = 0.
+        total = 0
+        for i in range(m):
+            #predict the ith test user's score
+            similar_users = self.find_similar_users(test_data[i])
+            similar_data = self.train_data[similar_users]
+            for j in range(n):
+                if test_data[i][j] == 0 and reference_data[i][j] != -1:
+                    valid_data = similar_data[similar_data[:,j] > 0]
+                    if len(valid_data > 0):
+                        predicted_value = np.average(valid_data[:, j])
+                    else:
+                        valid_data = test_data[i]
+                        valid_data = valid_data[valid_data > 0]
+                        if len(valid_data) > 0:
+                            predicted_value = np.average(valid_data)
+                        else:
+                            print('no valid row data')
+                            predicted_value = 0
+
+                    mae += np.abs(predicted_value - reference_data[i][j])
+                    total += 1
+        print('total = ', total, ', mae = ', mae)
+        return mae/total
