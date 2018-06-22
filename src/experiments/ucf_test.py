@@ -37,20 +37,40 @@ def test_user_based_recommender():
     rt_data = np.array(rt_data)
     num_train_examples = 300
     train_data, test_data = preprocess(rt_data, 0.3, num_train_examples)
-    print('======data process cost ', time.time() - begin)
+    # print('======data process cost ', time.time() - begin)
+
+    results = np.zeros((3, 3))
 
     num_hash_functions = [6, 8, 10]
     num_hash_tables = [6, 8, 10]
-    for nt in num_hash_tables:
-        for nf in num_hash_functions:
+    for i in range(3):
+        for j in range(3):
             begin = time.time()
-            uRecommender = UserBasedLSHRecommender(train_data)
+            uRecommender = UserBasedLSHRecommender(train_data,
+                                    num_hash_functions = num_hash_functions[j], num_hash_tables = num_hash_tables[i])
             uRecommender.train()
             # print('=======train process cost ', time.time() - begin)
             begin = time.time()
-            mae = uRecommender.evaluate(test_data, rt_data[num_train_examples:])
+            results[i][j] = uRecommender.evaluate(test_data, rt_data[num_train_examples:])
+            print('>', end='')
+
             # print('test cost ', time.time() - begin, ', mae = ', mae)
-            print('num_hash_functions = ', nf, ', num_hash_tables = ', nt, ', mae = ', mae)
+            # print('num_hash_functions = ', nf, ', num_hash_tables = ', nt, ', mae = ', mae)
+    print('')
+    return results
 
-test_user_based_recommender()
+def main_test(times = 10):
+    results = np.zeros((3, 3))
 
+    for t in range(times):
+        results = results + test_user_based_recommender()
+
+
+    with open('../../outputs/ucf_test_hash_parameters.txt', 'w') as f:
+        for i in range(3):
+            for j in range(3):
+                f.write('%f\t' % (results[i][j]/times))
+            f.write('\n')
+
+
+main_test(times = 30)

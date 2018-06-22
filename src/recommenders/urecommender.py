@@ -5,18 +5,33 @@
 '''
 from core.lsh_family import LSH
 import numpy as np
+import random
 
 class UserBasedLSHRecommender:
-    def __init__(self, train_data, num_hash_functions = 10, num_hash_tables = 8):
-        self.train_data = train_data
+    def __init__(self, data, ratio = 0.1, num_hash_functions = 10, num_hash_tables = 8):
+        self.raw_data = data
         self.num_hash_functions = num_hash_functions
         self.num_hash_tables = num_hash_tables
+        #random erased
+        self.data = self.randomErased()
         #initialize lsh_family
         self.lsh_family = []
         for i in range(num_hash_tables):
             self.lsh_family.append(LSH(num_hash_functions))
             #initialize the parameters of hash functions
-            self.lsh_family[i].fit(self.train_data.shape[1])
+            self.lsh_family[i].fit(self.data.shape[1])
+
+    def randomErased(self):
+        '''
+        随机将ratio比例的评分数据置为0
+        :return: 处理后的数据
+        '''
+        data = np.copy(self.raw_data)
+        random_indices = random.sample(range(data.size),
+                                       int(np.floor(data.size * self.ratio)))
+        data.ravel()[random_indices] = 0
+
+        return data
 
     def train(self):
         '''
@@ -25,12 +40,12 @@ class UserBasedLSHRecommender:
         :return:
         '''
         self.buckets = []
-        m = len(self.train_data)
+        m = len(self.data)
 
         for i in range(self.num_hash_tables):
             bucket = {}
             for j in range(m):
-                hash_value = self.lsh_family[i].get_hash_value(self.train_data[j])
+                hash_value = self.lsh_family[i].get_hash_value(self.data[j])
 
                 if bucket.get(hash_value) is None:
                     bucket[hash_value] = []
@@ -54,15 +69,16 @@ class UserBasedLSHRecommender:
 
         return list(set(similar_users))
 
-    def evaluate(self, test_data, reference_data):
+    def evaluate(self, times = 1):
         '''
+        随机
         评估算法的mae值
         :param test_data: array of test samples, with some scores masked
         :param reference_data: array of original data of test samples
         :return: average of mae
         '''
-        m = len(test_data)
-        n = len(test_data[0])
+        m = len(self.data)
+        n = len(self.data[0])
         mae = 0.
         total = 0
         for i in range(m):
@@ -85,5 +101,5 @@ class UserBasedLSHRecommender:
 
                     mae += np.abs(predicted_value - reference_data[i][j])
                     total += 1
-        print('total = ', total, ', mae = ', mae)
+        # print('total = ', total, ', mae = ', mae)
         return mae/total
