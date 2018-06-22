@@ -219,7 +219,7 @@ def test_mae(ratio, seed):
 
 # mae_of_average(0.2, 2)
 def tune_ratio_parameters(times):
-    ratios = [0.4, 0.5, 0.6, 0.7, 0.8]
+    ratios = [0.9, 0.93, 0.95, 0.98]
     rmaes_of_average = np.zeros((5, times))
     rmaes_of_lsh = np.zeros((5, times))
 
@@ -232,8 +232,8 @@ def tune_ratio_parameters(times):
 
     print(np.average(rmaes_of_average, axis = 1))
     print(np.average(rmaes_of_lsh, axis = 1))
-    dir = '../../outputs/irecommender/'
-    wh.write_2ddata_into_file(rmaes_of_average, dir+'rmaes_of_average.csv')
-    wh.write_2ddata_into_file(rmaes_of_lsh, dir + 'rmaes_of_lsh.csv')
+    # dir = '../../outputs/irecommender/'
+    # wh.write_2ddata_into_file(rmaes_of_average, dir+'rmaes_of_average.csv')
+    # wh.write_2ddata_into_file(rmaes_of_lsh, dir + 'rmaes_of_lsh.csv')
 
 tune_ratio_parameters(1)
