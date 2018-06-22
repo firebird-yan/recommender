@@ -7,7 +7,7 @@ def load_ws_dataset():
     :return:
     '''
     rt_data = []
-    with open('../../datasets/ws-dream/tpMatrix.txt', 'r') as f:
+    with open('../../datasets/ws-dream/rtMatrix.txt', 'r') as f:
         for line in f:
             values = [float(x) for x in line.split()]
             rt_data.append(values)

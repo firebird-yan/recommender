@@ -85,6 +85,7 @@ def prepare_data(ratio, seed):
     """
     org_data = wh.load_ws_dataset()
     org_data = np.array(org_data)
+    # org_data = org_data[:, 0:500]
     data = wh.preprocess(org_data, ratio, seed)
 
     return org_data, data
@@ -220,10 +221,10 @@ def test_mae(ratio, seed):
 # mae_of_average(0.2, 2)
 def tune_ratio_parameters(times):
     ratios = [0.9, 0.93, 0.95, 0.98]
-    rmaes_of_average = np.zeros((5, times))
-    rmaes_of_lsh = np.zeros((5, times))
+    rmaes_of_average = np.zeros((4, times))
+    rmaes_of_lsh = np.zeros((4, times))
 
-    for i in range(5):
+    for i in range(4):
         ratio = ratios[i]
         seed = 1
         for t in range(times):
