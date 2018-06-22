@@ -42,7 +42,7 @@ class ItemBasedLSHRecommender:
         '''
         v = self.similarity_matrix[index, :]
 
-        return np.argwhere(v > 0)
+        return np.argwhere(v >= 0)
 
     def evaluate(self, test_data, reference_data):
         '''
@@ -55,6 +55,7 @@ class ItemBasedLSHRecommender:
         num_of_test = len(test_data)
         maes = []
         num_of_failed = 0
+        reference_columns = []
 
         for i in range(num_of_test):
             begin = time.time()
@@ -66,14 +67,15 @@ class ItemBasedLSHRecommender:
                     similar_columns = test_data[i][similar_services]
                     similar_columns = similar_columns[similar_columns > 0]
                     if len(similar_columns) > 0:
-                        maes.append(np.average(similar_columns) - reference_data[i][c])
+                        maes.append(np.abs(np.average(similar_columns) - reference_data[i][c]))
+                        reference_columns.append(len(similar_columns))
                     else:
                         # print('no available similar services! %d'%(len(similar_services)))
                         num_of_failed += 1
 
         maes = np.array(maes)
         rmae = np.sqrt(np.dot(maes.T, maes)/maes.shape[0])
-        return rmae, num_of_failed
+        return rmae, num_of_failed, reference_columns
 
 
 def prepare_data(ratio, seed):
@@ -161,20 +163,22 @@ def mae_of_average(ratio, seed):
     test_samples = prepare_test_data(num_of_users, 50, seed + 1) #保证算法的一次迭代中用到的随机都是不同的
 
     maes = []
+    reference_columns = []
 
     for i in test_samples:
         user = data[i]
         columns = np.argwhere(user == 0)
         avg = np.average(user[user > 0])
-
+        num_of_available = len(user[user > 0])
         for c in columns:
             if org_data[i][c] != -1:
-                maes.append(org_data[i][c] - avg)
+                maes.append(np.abs(org_data[i][c] - avg))
+                reference_columns.append(num_of_available)
 
     maes = np.array(maes)
     rmae = np.sqrt(np.dot(maes.T, maes)/maes.shape[0])
 
-    return rmae
+    return rmae, reference_columns
 
 def test_mae_of_lsh(ratio, seed, num_of_hash_functions = 8, num_of_hash_tables = 6):
     org_data, data = prepare_data(ratio, seed)
@@ -184,9 +188,9 @@ def test_mae_of_lsh(ratio, seed, num_of_hash_functions = 8, num_of_hash_tables =
     recommender = ItemBasedLSHRecommender(data, num_of_hash_functions, num_of_hash_functions, seed + 2)
     recommender.classify()
 
-    rmae, failed = recommender.evaluate(data[test_samples], org_data[test_samples])
+    rmae, failed, reference_columns = recommender.evaluate(data[test_samples], org_data[test_samples])
 
-    return rmae, failed
+    return rmae, failed, reference_columns
 
 
 def test_mae(ratio, seed):
@@ -228,8 +232,11 @@ def tune_ratio_parameters(times):
         ratio = ratios[i]
         seed = 1
         for t in range(times):
-            rmaes_of_average[i][t] = mae_of_average(ratio, seed + t)
-            rmaes_of_lsh[i][t],_ = test_mae_of_lsh(ratio, seed + t)
+            rmaes_of_average[i][t], refrence_columns1 = mae_of_average(ratio, seed + t)
+            rmaes_of_lsh[i][t],_ , refrence_columns2 = test_mae_of_lsh(ratio, seed + t)
+
+            print(refrence_columns1)
+            print(refrence_columns2)
 
     print(np.average(rmaes_of_average, axis = 1))
     print(np.average(rmaes_of_lsh, axis = 1))

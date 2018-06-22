@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12a1f414-04d4-4f88-b865-ffa164bda6ce" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/datahandler/wsdream_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/datahandler/wsdream_handler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/recommenders/irecommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recommenders/irecommender.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +19,8 @@
       <file leaf-file-name="irecommender.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/recommenders/irecommender.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="62" column="29" lean-forward="true" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+            <state relative-caret-position="173">
+              <caret line="165" column="26" lean-forward="true" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="26" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -34,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/src/datahandler/wsdream_handler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -100,40 +98,6 @@
             <path>
               <item name="recommender" type="b2602c69:ProjectViewProjectNode" />
               <item name="recommender" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recommender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="datasets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recommender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="datasets" type="462c0819:PsiDirectoryNode" />
-              <item name="ws-dream" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recommender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recommender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="datahandler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recommender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="experiments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recommender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recommender" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="recommenders" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -398,7 +362,7 @@
     <entry file="file://$PROJECT_DIR$/src/datahandler/wsdream_handler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -407,8 +371,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/recommenders/irecommender.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="62" column="29" lean-forward="true" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+        <state relative-caret-position="173">
+          <caret line="165" column="26" lean-forward="true" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="26" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
