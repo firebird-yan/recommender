@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12a1f414-04d4-4f88-b865-ffa164bda6ce" name="Default" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/recommender.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/recommender.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
       <change beforePath="$PROJECT_DIR$/src/recommenders/irecommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recommenders/irecommender.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,15 +19,32 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/recommender$py_test_in_ucf_test_py.coverage" NAME="py.test in ucf_test.py Coverage Results" MODIFIED="1528275182179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/experiments" />
+    <SUITE FILE_PATH="coverage/recommender$py_test_in_ucf_test_py.coverage" NAME="py.test in ucf_test.py Coverage Results" MODIFIED="1529635202738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/experiments" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="irecommender.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/recommenders/irecommender.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="191">
               <caret line="196" column="41" selection-start-line="196" selection-start-column="41" selection-end-line="196" selection-end-column="41" />
+=======
+            <state relative-caret-position="173">
+              <caret line="165" column="26" lean-forward="true" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wsdream_handler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/datahandler/wsdream_handler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -64,7 +84,11 @@
         <option value="$PROJECT_DIR$/src/core/lsh_family.py" />
         <option value="$PROJECT_DIR$/src/recommenders/urecommender.py" />
         <option value="$PROJECT_DIR$/src/experiments/ucf_test.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/recommenders/test.py" />
+=======
+        <option value="$PROJECT_DIR$/src/datahandler/wsdream_handler.py" />
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
         <option value="$PROJECT_DIR$/src/recommenders/irecommender.py" />
       </list>
     </option>
@@ -99,6 +123,7 @@
               <item name="recommender" type="b2602c69:ProjectViewProjectNode" />
               <item name="recommender" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
             <path>
               <item name="recommender" type="b2602c69:ProjectViewProjectNode" />
               <item name="recommender" type="462c0819:PsiDirectoryNode" />
@@ -110,6 +135,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="recommenders" type="462c0819:PsiDirectoryNode" />
             </path>
+=======
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
           </expand>
           <select />
         </subPane>
@@ -186,6 +213,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="recommender" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -205,6 +233,8 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+=======
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
     <configuration name="py.test in ucf_test.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="recommender" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -223,15 +253,22 @@
     <list>
       <item itemvalue="Python tests.py.test in ucf_test.py" />
       <item itemvalue="Python.irecommender" />
+<<<<<<< HEAD
       <item itemvalue="Python.test" />
+=======
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.irecommender" />
+<<<<<<< HEAD
         <item itemvalue="Python.irecommender" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.irecommender" />
+=======
+        <item itemvalue="Python tests.py.test in ucf_test.py" />
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
       </list>
     </recent_temporary>
   </component>
@@ -249,9 +286,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="py_test_in_ucf_test_py - 2018.06.06 at 16h 24m 36s.xml">
-      <configuration name="py.test in ucf_test.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="py_test_in_ucf_test_py - 2018.06.06 at 16h 28m 57s.xml">
       <configuration name="py.test in ucf_test.py" configurationId="tests" />
     </history-entry>
@@ -279,6 +313,9 @@
     <history-entry file="py_test_in_ucf_test_py - 2018.06.06 at 17h 00m 38s.xml">
       <configuration name="py.test in ucf_test.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="py_test_in_ucf_test_py - 2018.06.22 at 10h 40m 11s.xml">
+      <configuration name="py.test in ucf_test.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -288,10 +325,17 @@
       <window_info anchor="right" x="0" y="0" width="295" height="544" id="Documentation" order="5" side_tool="true" weight="0.24583964" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.58347106" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32733223" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27836612" />
+=======
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.33028722" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3289689" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2579425" />
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="4" />
@@ -316,6 +360,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/recommenders/irecommender.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="3111">
           <caret line="183" column="26" lean-forward="true" selection-start-line="183" selection-start-column="26" selection-end-line="183" selection-end-column="26" />
           <folding>
@@ -364,6 +409,9 @@
     <entry file="file://$PROJECT_DIR$/src/recommenders/irecommender.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4012">
+=======
+        <state relative-caret-position="3944">
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
           <caret line="236" column="71" lean-forward="true" selection-start-line="234" selection-start-column="6" selection-end-line="236" selection-end-column="71" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -448,17 +496,32 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/recommenders/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/datahandler/wsdream_handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/recommenders/irecommender.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="191">
           <caret line="196" column="41" selection-start-line="196" selection-start-column="41" selection-end-line="196" selection-end-column="41" />
+=======
+        <state relative-caret-position="173">
+          <caret line="165" column="26" lean-forward="true" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="26" />
+>>>>>>> a8a849fa1007e7acde200a91aa9c23b532ce2728
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

@@ -4,7 +4,7 @@ import datahandler.wsdream_handler as wh
 import time
 import random
 
-class ItemBasedLSHRecommender:
+class ItemBasedLSHRecommenderOld:
     def __init__(self, data, num_of_functions = 4, num_of_tables = 8, seed = 1):
         '''
         :param data: shape (num_of_users, num_of_services, num_of_time_slices)
@@ -60,48 +60,35 @@ class ItemBasedLSHRecommender:
         :param reference_data:
         :return:
         '''
-        pass
+        num_of_test = len(test_data)
+        maes = []
+        num_of_failed = 0
+        num_of_similars = []
+        reference_columns = []
 
-def test_num_of_simliar_users():
-    data = wh.load_ws_dataset()
-    data = np.array(data)
-    (num_of_users, num_of_services) = data.shape
-    print(data.shape)
-
-    random.seed(1)
-    test_samples = random.sample(range(num_of_services), 500)
-
-    hash_table_options = [4, 6, 8, 10, 12]
-    hash_function_options = [4, 6, 8, 10, 12]
-    num_table_options = 1
-    num_function_options = 5
-    num_of_similar_services = np.zeros((num_table_options, num_function_options))
-    num_of_isolated_services = np.zeros((num_table_options, num_function_options))
-    for i in range(num_table_options):
-        for j in range(num_function_options):
-            num_of_hash_table = hash_table_options[i]
-            num_of_hash_function = hash_function_options[j]
+        for i in range(num_of_test):
             begin = time.time()
-            recommender = ItemBasedLSHRecommender(data, num_of_hash_function, num_of_hash_table)
-            recommender.classify()
-            print('num_of_hash_table = %d, prepare cost %.4f' % (num_of_hash_table, time.time() - begin))
-            begin = time.time()
-            nums = 0
-            isolated_count = 0
-            for t in test_samples:
-                similar_services = recommender.find_similar_services(data[:, t])
-                num = len(similar_services)
-                if num == 0:
-                    isolated_count += 1
+            columns = np.argwhere(test_data[i] == 0)
 
-                nums += num
-            num_of_similar_services[i][j] = nums / 500.0
-            num_of_isolated_services[i][j] = isolated_count
-            print('num_of_hash_table = %d, find similar services cost %.4fs' % (num_of_hash_table, time.time() - begin))
+            for c in columns:
+                if reference_data[i][c] != -1:
+                    similar_services = self.find_similar_services(self.data[:, c])
+                    num_of_similars.append(len(similar_services))
+                    similar_columns = test_data[i][similar_services]
+                    similar_columns = similar_columns[similar_columns > 0]
 
-    print(num_of_similar_services)
-    print(num_of_isolated_services)
+                    if len(similar_columns) > 0:
+                        maes.append(np.abs(np.average(similar_columns) - reference_data[i][c]))
+                        reference_columns.append(len(similar_columns))
+                    else:
+                        # print('no available similar services! %d'%(len(similar_services)))
+                        num_of_failed += 1
 
-test_num_of_simliar_users()
+        maes = np.array(maes)
+        rmae = np.sqrt(np.dot(maes.T, maes) / maes.shape[0])
+        print('old lsh:', np.average(num_of_similars), np.average(reference_columns))
+
+        return rmae, num_of_failed, reference_columns
+
 
 
