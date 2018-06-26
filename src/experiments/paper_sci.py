@@ -120,5 +120,5 @@ def evaluate_vary_with_lsh_parameters(ratio, seed, hash_function_options, hash_t
 ratios = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 seed = 1 #先运行一个ratio100次，运行下一个的时候需要seed=2，依次类推
 for ratio in ratios:
-    tune_lsh_parameters(ratio, seed, 100)
+    tune_lsh_parameters(ratio, seed, 1)
     seed += 1000
