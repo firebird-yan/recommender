@@ -40,6 +40,16 @@ def draw_lines():
 
     plt.show()
 
+def draw_bias():
+    rmaes, _, rmaes_of_average = load_result()
+
+    bias = []
+    for i in range(7):
+        bias.append(rmaes_of_average[i] - rmaes[i].min())
+
+    plt.plot(range(7), bias)
+    plt.show()
+
 def compare_fails(width = 5):
     _, fails, _ = load_result()
     num_options = [4, 6, 8, 10]
@@ -58,4 +68,5 @@ def compare_fails(width = 5):
 
 
 # draw_lines()
-compare_fails()
+# compare_fails()
+# draw_bias()
