@@ -37,8 +37,35 @@ class ItemBasedLSHRecommender:
             for j in range(self.num_of_services):
                 self.similarity_matrix[j, :][hash_values == hash_values[j]] += 1
 
+    def compute_transitive_similarity_matrix(self, threshold=0):
+        '''
+        根据朋友的朋友也是朋友的原则，重新计算相似度矩阵
+        eg: 对于service i, 已知其朋友为service j， 二者的相似度为4
+        又service j的朋友是service k, 二者的相似度为3
+        假定service i 和service k的相似度为0
+        那么根据朋友的朋友是朋友的原则，我们将service i和service k的相似度更新为0.12（0.4 * 0.3）
+        另外，考虑到service k不光是 service j的朋友，也有可能是service w的朋友，
+        所以再更新service i和service k的相似度时，我们取当前相似度和新计算的相似度的最大值
+        :param threshold:
+        :return:
+        '''
+        self.transitive_similarity_matrix = np.copy(self.similarity_matrix)
 
-    def evaluate(self, test_data, reference_data, threshold=0):
+        for i in range(self.num_of_services):
+            for j in range(self.num_of_services):
+                if self.similarity_matrix[i][j] > threshold:
+                    for k in range(self.num_of_services):
+                        if self.similarity_matrix[j][k] > threshold:
+                            cur_val = self.transitive_similarity_matrix[i][k]
+                            cur_val *= self.similarity_matrix[j][k]
+                            #另外，考虑到service k不光是service j的朋友
+                            # 也有可能是service w的朋友，
+                            # 所以再更新service i和service k的相似度时，
+                            # 我们取当前相似度和新计算的相似度的最大值
+                            self.transitive_similarity_matrix[i][k] = max(cur_val, self.transitive_similarity_matrix)
+
+
+    def evaluate(self, test_data, reference_data, threshold=0, use_transitive=False):
         '''
         预测test_data中值为0的response time值，并计算所有预测值的绝对差
         evaluate mae
@@ -50,13 +77,18 @@ class ItemBasedLSHRecommender:
         begin = time.time()
         num_of_test = len(test_data)
 
+        if use_transitive:
+            similarity_matrix = self.transitive_similarity_matrix
+        else:
+            similarity_matrix = self.similarity_matrix
+
         #需要预测的数据的矩阵，(num_of_test, num_of_service)， 如果需要预测，对应值为True，否则为False
         to_be_predicted = (test_data == 0) * (reference_data != -1)
         #为了便于计算，将元素置为-1的置为0
         test_data[test_data == -1] = 0
         #计算每个service的可用的相似service的个数，以方便下一步的求平均
         user_matrix = (test_data > 0).astype(float)
-        similar_services = (self.similarity_matrix > threshold).astype(float)
+        similar_services = (similarity_matrix > threshold).astype(float)
         available_count = np.dot(user_matrix, similar_services)
         #available_count = 0的即为无法预测的元素
         #需要先去除不需要预测的元素
