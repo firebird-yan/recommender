@@ -62,7 +62,7 @@ class ItemBasedLSHRecommender:
                             # 也有可能是service w的朋友，
                             # 所以再更新service i和service k的相似度时，
                             # 我们取当前相似度和新计算的相似度的最大值
-                            self.transitive_similarity_matrix[i][k] = max(cur_val, self.transitive_similarity_matrix)
+                            self.transitive_similarity_matrix[i][k] = max(cur_val, self.transitive_similarity_matrix[i][k])
 
 
     def evaluate(self, test_data, reference_data, threshold=0, use_transitive=False):
@@ -78,6 +78,7 @@ class ItemBasedLSHRecommender:
         num_of_test = len(test_data)
 
         if use_transitive:
+            self.compute_transitive_similarity_matrix(threshold)
             similarity_matrix = self.transitive_similarity_matrix
         else:
             similarity_matrix = self.similarity_matrix
